@@ -34,15 +34,20 @@ jobs:
 
       - name: Install GitHub Linguist
         run: |
+          # 使用 --user-install 安装并直接设置 PATH
           gem install --user-install github-linguist
           RUBY_VERSION=$(ruby -e 'puts Gem.ruby_version.to_s.match(/\d+\.\d+/)[0]')
+          echo "Ruby Version: $RUBY_VERSION"
           GEM_BIN_PATH="$HOME/.gem/ruby/$RUBY_VERSION.0/bin"
           echo "Gem Bin Path: $GEM_BIN_PATH"
           echo "$GEM_BIN_PATH" >> $GITHUB_PATH
 
       - name: Generate language stats
         run: |
-          github-linguist --json > linguist.json
+          # 显式使用完整路径调用 github-linguist
+          $HOME/.gem/ruby/*/bin/github-linguist --json > linguist.json
+          # 或直接依赖 PATH
+          # github-linguist --json > linguist.json
 
       # 2. 生成或修改文件（例如更新 README）
       - name: Generate/Update README
