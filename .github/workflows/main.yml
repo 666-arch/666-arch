@@ -1,8 +1,10 @@
-name: Update README
+name: main
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # 每天运行一次
+    - cron: "0 0 * * *" 
+    - cron: '12 0 * * *'
+    - cron: '18 0 * * *'
   workflow_dispatch:      # 允许手动触发
 
 jobs:
