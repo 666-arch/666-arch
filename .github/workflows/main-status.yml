@@ -28,8 +28,8 @@ jobs:
       # 3. 提交更改
       - name: Commit changes
         run: |
-          git config --global 666-arch "GitHub Actions"
-          git config --global hc18174419502@163.com "actions@github.com"
+          git config --global user.name "666-arch"
+          git config --global user.email "hc18174419502@163.com"
           git add README.md
           git commit -m "Auto-update README"
 
