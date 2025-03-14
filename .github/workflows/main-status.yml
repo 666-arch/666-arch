@@ -1,0 +1,38 @@
+name: main-status
+
+on:
+  schedule:
+    - cron: "0 0 * * *" 
+    - cron: '12 0 * * *'
+    - cron: '18 0 * * *'
+  workflow_dispatch:      # 允许手动触发
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 添加写权限
+
+    steps:
+      # 1. 检出代码（关键步骤！）
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 拉取完整提交历史（可选）
+
+      # 2. 生成或修改文件（例如更新 README）
+      - name: Generate/Update README
+        run: |
+          echo "Last updated: $(date)" >> README.md
+
+      # 3. 提交更改
+      - name: Commit changes
+        run: |
+          git config --global 666-arch "GitHub Actions"
+          git config --global hc18174419502@163.com "actions@github.com"
+          git add README.md
+          git commit -m "Auto-update README"
+
+      # 4. 推送到远程仓库
+      - name: Push changes
+        run: git push
