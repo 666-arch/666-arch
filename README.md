@@ -7,4 +7,10 @@ I'm a Front-end developer
 
 -  **Learning :** NestJS | NodeJs
 -  **Languages :** Javascript | C#
+<<<<<<< HEAD
 -  **Hobbies:** CS2
+=======
+-  **Hobbies:** CS2
+
+Last updated: Fri Mar 14 08:56:01 UTC 2025
+>>>>>>> fa5eb07aba3ce294071271f7914a68a80a431c24
