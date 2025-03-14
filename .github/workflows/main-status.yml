@@ -34,13 +34,13 @@ jobs:
 
       - name: Install GitHub Linguist
         run: |
-          # 使用 gem 用户安装模式（避免权限问题）
           gem install --user-install github-linguist
-          # 将 gem 的二进制路径添加到环境变量
-          echo "$HOME/.gem/ruby/$(ls $HOME/.gem/ruby)/bin" >> $GITHUB_PATH
-      
+          RUBY_VERSION=$(ruby -e 'puts Gem.ruby_version.to_s.match(/\d+\.\d+/)[0]')
+          GEM_BIN_PATH="$HOME/.gem/ruby/$RUBY_VERSION.0/bin"
+          echo "Gem Bin Path: $GEM_BIN_PATH"
+          echo "$GEM_BIN_PATH" >> $GITHUB_PATH
+
       - name: Generate language stats
-        id: stats
         run: |
           github-linguist --json > linguist.json
 
