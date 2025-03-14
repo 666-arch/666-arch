@@ -42,8 +42,7 @@ jobs:
       - name: Generate language stats
         id: stats
         run: |
-          linguist --json > linguist.json
-          echo "stats=$(cat linguist.json)" >> $GITHUB_OUTPUT
+          github-linguist --json > linguist.json
 
       # 2. 生成或修改文件（例如更新 README）
       - name: Generate/Update README
