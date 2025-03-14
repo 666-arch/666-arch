@@ -20,6 +20,18 @@ jobs:
         with:
           fetch-depth: 0  # 拉取完整提交历史（可选）
 
+      - name: Install GitHub Linguist
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y cmake pkg-config
+          gem install github-linguist
+      
+      - name: Generate language stats
+        id: stats
+        run: |
+          linguist --json > linguist.json
+          echo "stats=$(cat linguist.json)" >> $GITHUB_OUTPUT
+
       # 2. 生成或修改文件（例如更新 README）
       - name: Generate/Update README
         run: |
