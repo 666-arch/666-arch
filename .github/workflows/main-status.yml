@@ -20,40 +20,10 @@ jobs:
         with:
           fetch-depth: 0  # 拉取完整提交历史（可选）
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update -y
-          # 安装必要的编译工具和依赖
-          sudo apt-get install -y \
-            cmake \
-            pkg-config \
-            ruby-dev \
-            build-essential \
-            libicu-dev \
-            zlib1g-dev
-
-      - name: Install GitHub Linguist
-        run: |
-          # 使用 --user-install 安装并直接设置 PATH
-          gem install --user-install github-linguist
-          RUBY_VERSION=$(ruby -e 'puts Gem.ruby_version.to_s.match(/\d+\.\d+/)[0]')
-          echo "Ruby Version: $RUBY_VERSION"
-          GEM_BIN_PATH="$HOME/.gem/ruby/$RUBY_VERSION.0/bin"
-          echo "Gem Bin Path: $GEM_BIN_PATH"
-          echo "$GEM_BIN_PATH" >> $GITHUB_PATH
-
-      - name: Generate language stats
-        run: |
-          # 显式使用完整路径调用 github-linguist
-          $HOME/.gem/ruby/*/bin/github-linguist --json > linguist.json
-          # 或直接依赖 PATH
-          # github-linguist --json > linguist.json
-
       # 2. 生成或修改文件（例如更新 README）
       - name: Generate/Update README
         run: |
           echo "Last updated: $(date)" >> README.md
-
       # 3. 提交更改
       - name: Commit changes
         run: |
@@ -61,7 +31,6 @@ jobs:
           git config --global user.email "hc18174419502@163.com"
           git add README.md
           git commit -m "Auto-update README"
-
       # 4. 推送到远程仓库
       - name: Push changes
         run: git push
