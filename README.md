@@ -9,7 +9,7 @@ I'm a Front-end developer
 -  **Languages :** Javascript | C#
 -  **Hobbies:** CS2
 
-## My code time
+<!-- ## My code time -->
 
 <!-- LANGUAGE_STATS_START -->
-<!-- LANGUAGE_STATS_END -->
+<!-- LANGUAGE_STATS_END --> 
