@@ -8,8 +8,3 @@ I'm a Front-end developer
 -  **Learning :** NestJS | NodeJs
 -  **Languages :** Javascript | C#
 -  **Hobbies:** CS2
-
-<!-- ## My code time -->
-
-<!-- LANGUAGE_STATS_START -->
-<!-- LANGUAGE_STATS_END --> 
